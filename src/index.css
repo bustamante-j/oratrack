@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #12233f;
+  background: #f4f8fc;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: #8edcff; color: #071b33; }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c6d7e8; border-radius: 999px; }
+
+.card {
+  @apply rounded-2xl border border-white/80 bg-white/95 shadow-soft backdrop-blur-sm;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.input {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-skybrand-400 focus:ring-4 focus:ring-skybrand-100;
+}
+
+.label {
+  @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500;
+}
+
+.table-wrap {
+  @apply overflow-x-auto rounded-2xl border border-slate-200 bg-white;
+}
+
+.data-table {
+  @apply min-w-full text-left text-sm;
+}
+
+.data-table th {
+  @apply whitespace-nowrap border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500;
+}
+
+.data-table td {
+  @apply border-b border-slate-100 px-4 py-3.5 text-slate-700;
+}
+
+.data-table tbody tr {
+  @apply transition hover:bg-skybrand-50/50;
+}
+
+.public-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(44, 167, 237, 0.14) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.text-balance { text-wrap: balance; }
+
+.hero-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .08;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 24px 70px rgba(3, 19, 39, .28);
+  backdrop-filter: blur(18px);
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(44, 167, 237, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 167, 237, .055) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.portal-shell {
+  background:
+    radial-gradient(circle at 90% 4%, rgba(88, 197, 251, .14), transparent 24rem),
+    radial-gradient(circle at 18% 92%, rgba(139, 92, 246, .08), transparent 25rem),
+    #f4f8fc;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #a9c6df !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 24px !important;
+  border-radius: 999px !important;
+  background: #2ca7ed !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 999px;
+  background: white;
+  color: #0b2447 !important;
+  box-shadow: 0 8px 25px rgba(7, 27, 51, .14);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after { font-size: 15px !important; font-weight: 900; }
+
+.oratrack-calendar {
+  --rdp-accent-color: #0b2447;
+  --rdp-accent-background-color: #d9f3ff;
+  --rdp-day-height: 54px;
+  --rdp-day-width: 54px;
+  width: 100%;
+  margin: 0;
+}
+
+.oratrack-calendar .rdp-months,
+.oratrack-calendar .rdp-month,
+.oratrack-calendar .rdp-month_grid {
+  width: 100%;
+  max-width: none;
+}
+
+.oratrack-calendar .rdp-month_caption {
+  height: 48px;
+  font-family: Manrope, Inter, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #071b33;
+}
+
+.oratrack-calendar .rdp-weekday {
+  padding: .65rem 0;
+  color: #94a3b8;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.oratrack-calendar .rdp-day {
+  padding: 3px;
+}
+
+.oratrack-calendar .rdp-day_button {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: 0;
+  border-radius: 14px;
+  color: #334155;
+  font-size: .82rem;
+  font-weight: 700;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.oratrack-calendar .rdp-day_button:hover {
+  background: #effaff;
+  color: #1687ca;
+  transform: translateY(-1px);
+}
+
+.oratrack-calendar .rdp-selected .rdp-day_button {
+  background: #0b2447;
+  color: white;
+  box-shadow: 0 8px 20px rgba(11, 36, 71, .18);
+}
+
+.oratrack-calendar .calendar-has-event .rdp-day_button::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #2ca7ed;
+  transform: translateX(-50%);
+}
+
+.oratrack-calendar .rdp-selected.calendar-has-event .rdp-day_button::after {
+  background: #8edcff;
+}
+
+.oratrack-calendar .rdp-outside {
+  opacity: .32;
+}
+
+.oratrack-calendar .rdp-button_previous,
+.oratrack-calendar .rdp-button_next {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  color: #0b2447;
+}
+
+@media (max-width: 520px) {
+  .oratrack-calendar { --rdp-day-height: 43px; --rdp-day-width: 43px; }
+  .oratrack-calendar .rdp-day_button { height: 42px; border-radius: 11px; font-size: .75rem; }
+}
+
+@media print {
+  body { background: white !important; }
+  .print-hidden, aside, header { display: none !important; }
+  .print-area { position: absolute; inset: 0; padding: 0 !important; }
+  .card { box-shadow: none !important; break-inside: avoid; }
+}
