@@ -1,4 +1,4 @@
-import { getRisk, subjectNames } from '../utils/risk'
+import { getRisk, subjectNames } from '../utils/risk.js'
 
 const studentNames = [
   'Aira Mae Abad', 'John Paulo Agustin', 'Mikaela Andaya', 'Nathaniel Aquino', 'Sophia Balagtas',

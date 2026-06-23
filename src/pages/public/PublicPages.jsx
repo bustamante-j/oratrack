@@ -5,6 +5,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { DayPicker } from 'react-day-picker'
 import { format, isSameDay, isSameMonth, parseISO } from 'date-fns'
+import {
+  BellRinging as PhBellRinging, CalendarDots as PhCalendarDots, Shapes as PhShapes,
+  Buildings as PhBuildings, Books as PhBooks, BowlFood as PhBowlFood, SoccerBall as PhSoccerBall,
+  PaintBrushBroad as PhPaintBrush, HandHeart as PhHandHeart, UsersThree as PhUsersThree,
+} from '@phosphor-icons/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -22,23 +27,35 @@ import { Badge, Button, Card, EmptyState, Modal } from '../../components/ui'
 import { AnimatedNumber, Reveal } from '../../components/motion'
 import campusHero from '../../assets/balili-campus-hero.webp'
 import classroomPhoto from '../../assets/balili-classroom.webp'
+import programReading from '../../assets/program-reading.webp'
+import programSports from '../../assets/program-sports.webp'
+import programNutrition from '../../assets/program-nutrition.webp'
+import programArts from '../../assets/program-arts.webp'
+import sectionSupport from '../../assets/section-support.webp'
+import sectionFamily from '../../assets/section-family.webp'
+import sectionNews from '../../assets/section-news.webp'
+import sectionEvents from '../../assets/section-events.webp'
+import sectionAbout from '../../assets/section-about.webp'
+import aboutHistory from '../../assets/about-history.webp'
+import newsFeature from '../../assets/news-feature.webp'
+import programsHero from '../../assets/programs-hero.webp'
 
 const formatDate = (date) => new Intl.DateTimeFormat('en-PH', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(`${date}T00:00:00`))
 
 const quickLinks = [
-  { to: '/announcements', label: 'School News', text: 'Read the latest updates', icon: BellRing, color: 'from-skybrand-500 to-blue-600' },
-  { to: '/events', label: 'Events Calendar', text: 'See what is coming up', icon: CalendarDays, color: 'from-violet-500 to-indigo-600' },
-  { to: '/programs', label: 'Programs', text: 'Explore learner support', icon: BookHeart, color: 'from-emerald-500 to-teal-600' },
-  { to: '/contact', label: 'School Office', text: 'Contact our team', icon: FileText, color: 'from-amber-500 to-orange-600' },
+  { to: '/announcements', label: 'School News', text: 'Read the latest updates', icon: PhBellRinging, color: 'from-skybrand-500 to-blue-600' },
+  { to: '/events', label: 'Events Calendar', text: 'See what is coming up', icon: PhCalendarDots, color: 'from-violet-500 to-indigo-600' },
+  { to: '/programs', label: 'Programs', text: 'Explore learner support', icon: PhShapes, color: 'from-emerald-500 to-teal-600' },
+  { to: '/contact', label: 'School Office', text: 'Contact our team', icon: PhBuildings, color: 'from-amber-500 to-orange-600' },
 ]
 
 const programs = [
-  { icon: BookMarked, title: 'Reading and Literacy', short: 'Build confident, joyful readers', text: 'Guided reading, buddy sessions, and inviting classroom libraries help every child become a confident reader.', color: 'bg-skybrand-500', tint: 'from-skybrand-50 to-white', stat: '3x weekly', statLabel: 'guided reading', highlights: ['Reading buddy sessions', 'Classroom book corners', 'Family reading prompts'] },
-  { icon: Apple, title: 'School Nutrition', short: 'Healthy bodies, ready minds', text: 'Nutrition education and feeding support help learners stay healthy, active, and ready to learn.', color: 'bg-emerald-500', tint: 'from-emerald-50 to-white', stat: '5 days', statLabel: 'wellness support', highlights: ['Healthy meal lessons', 'Growth monitoring', 'Family nutrition tips'] },
-  { icon: Trophy, title: 'Sports and Wellness', short: 'Move, play, and grow together', text: 'Movement, team activities, and wellness lessons build healthy habits and joyful confidence.', color: 'bg-violet-500', tint: 'from-violet-50 to-white', stat: '6 clubs', statLabel: 'active pathways', highlights: ['Team sports', 'Movement breaks', 'Wellness challenges'] },
-  { icon: Music2, title: 'Arts and Culture', short: 'Create with pride and imagination', text: 'Music, visual arts, dance, and local traditions give learners more ways to express themselves.', color: 'bg-rose-500', tint: 'from-rose-50 to-white', stat: '4 areas', statLabel: 'creative expression', highlights: ['Music and movement', 'Visual arts', 'Local culture projects'] },
-  { icon: HandHeart, title: 'Learner Support', short: 'Timely care for every learner', text: 'Teachers coordinate remediation, family follow-ups, and practical classroom interventions.', color: 'bg-amber-500', tint: 'from-amber-50 to-white', stat: 'Weekly', statLabel: 'progress reviews', highlights: ['Focused remediation', 'Attendance follow-up', 'Individual action plans'] },
-  { icon: UsersRound, title: 'Family Partnerships', short: 'Families belong in school life', text: 'Regular meetings and volunteer programs make families active partners in school life.', color: 'bg-blue-600', tint: 'from-blue-50 to-white', stat: 'Monthly', statLabel: 'family touchpoints', highlights: ['Parent conferences', 'Volunteer days', 'Home learning guides'] },
+  { icon: PhBooks, image: programReading, title: 'Reading and Literacy', short: 'Build confident, joyful readers', text: 'Guided reading, buddy sessions, and inviting classroom libraries help every child become a confident reader.', color: 'bg-skybrand-500', tint: 'from-skybrand-50 to-white', stat: '3x weekly', statLabel: 'guided reading', highlights: ['Reading buddy sessions', 'Classroom book corners', 'Family reading prompts'] },
+  { icon: PhBowlFood, image: programNutrition, title: 'School Nutrition', short: 'Healthy bodies, ready minds', text: 'Nutrition education and feeding support help learners stay healthy, active, and ready to learn.', color: 'bg-emerald-500', tint: 'from-emerald-50 to-white', stat: '5 days', statLabel: 'wellness support', highlights: ['Healthy meal lessons', 'Growth monitoring', 'Family nutrition tips'] },
+  { icon: PhSoccerBall, image: programSports, title: 'Sports and Wellness', short: 'Move, play, and grow together', text: 'Movement, team activities, and wellness lessons build healthy habits and joyful confidence.', color: 'bg-violet-500', tint: 'from-violet-50 to-white', stat: '6 clubs', statLabel: 'active pathways', highlights: ['Team sports', 'Movement breaks', 'Wellness challenges'] },
+  { icon: PhPaintBrush, image: programArts, title: 'Arts and Culture', short: 'Create with pride and imagination', text: 'Music, visual arts, dance, and local traditions give learners more ways to express themselves.', color: 'bg-rose-500', tint: 'from-rose-50 to-white', stat: '4 areas', statLabel: 'creative expression', highlights: ['Music and movement', 'Visual arts', 'Local culture projects'] },
+  { icon: PhHandHeart, image: sectionSupport, title: 'Learner Support', short: 'Timely care for every learner', text: 'Teachers coordinate remediation, family follow-ups, and practical classroom interventions.', color: 'bg-amber-500', tint: 'from-amber-50 to-white', stat: 'Weekly', statLabel: 'progress reviews', highlights: ['Focused remediation', 'Attendance follow-up', 'Individual action plans'] },
+  { icon: PhUsersThree, image: sectionFamily, title: 'Family Partnerships', short: 'Families belong in school life', text: 'Regular meetings and volunteer programs make families active partners in school life.', color: 'bg-blue-600', tint: 'from-blue-50 to-white', stat: 'Monthly', statLabel: 'family touchpoints', highlights: ['Parent conferences', 'Volunteer days', 'Home learning guides'] },
 ]
 
 function PublicHero({ eyebrow, title, description, image = campusHero, children }) {
@@ -152,7 +169,7 @@ export function HomePage() {
             <div className="grid overflow-hidden rounded-t-[2rem] border border-white/15 bg-white shadow-[0_-15px_55px_rgba(7,27,51,.18)] sm:grid-cols-2 lg:grid-cols-4">
               {quickLinks.map(({ to, label, text, icon: Icon, color }, index) => (
                 <Link key={to} to={to} className={`group flex items-center gap-4 p-5 transition hover:bg-slate-50 lg:p-6 ${index ? 'border-t border-slate-100 sm:border-l sm:border-t-0' : ''} ${index === 2 ? 'sm:border-l-0 lg:border-l' : ''}`}>
-                  <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-white shadow-lg ${color}`}><Icon size={21} /></div>
+                  <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-white shadow-lg ${color}`}><Icon size={22} weight="duotone" /></div>
                   <div className="min-w-0"><p className="font-display text-sm font-extrabold text-navy-950">{label}</p><p className="mt-1 truncate text-xs text-slate-500">{text}</p></div>
                   <ChevronRight size={17} className="ml-auto shrink-0 text-slate-300 transition group-hover:translate-x-1 group-hover:text-skybrand-500" />
                 </Link>
@@ -225,13 +242,19 @@ export function HomePage() {
           </Reveal>
           <Reveal delay={.1} className="mt-12">
             <Swiper modules={[Autoplay, Navigation, Pagination]} navigation pagination={{ clickable: true }} autoplay={{ delay: 4200, disableOnInteraction: false }} spaceBetween={20} breakpoints={{ 0: { slidesPerView: 1 }, 680: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }} className="!pb-14 !px-1">
-              {programs.map(({ icon: Icon, title, text, color, tint }) => (
+              {programs.map(({ icon: Icon, title, text, color, tint, image }) => (
                 <SwiperSlide key={title} className="h-auto">
-                  <div className={`group flex h-full min-h-72 flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-gradient-to-br p-7 transition duration-300 hover:-translate-y-1 hover:shadow-soft ${tint}`}>
-                    <div className={`grid h-14 w-14 place-items-center rounded-2xl text-white shadow-lg transition duration-300 group-hover:rotate-3 group-hover:scale-110 ${color}`}><Icon size={25} /></div>
-                    <h3 className="mt-8 font-display text-xl font-extrabold text-navy-950">{title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-7 text-slate-500">{text}</p>
-                    <Link to="/programs" className="mt-5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-navy-900">Discover program <ArrowRight size={15} /></Link>
+                  <div className="group flex h-full min-h-[27rem] flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+                    <div className="relative h-44 shrink-0 overflow-hidden">
+                      <img src={image} alt={`${title} at Balili Elementary School`} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/65 via-transparent to-transparent" />
+                      <div className={`absolute bottom-4 left-5 grid h-12 w-12 place-items-center rounded-2xl text-white shadow-lg ring-4 ring-white/25 transition duration-300 group-hover:rotate-3 group-hover:scale-110 ${color}`}><Icon size={24} weight="duotone" /></div>
+                    </div>
+                    <div className={`flex flex-1 flex-col bg-gradient-to-br p-6 ${tint}`}>
+                      <h3 className="font-display text-xl font-extrabold text-navy-950">{title}</h3>
+                      <p className="mt-3 flex-1 text-sm leading-7 text-slate-500">{text}</p>
+                      <Link to="/programs" className="mt-5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-navy-900">Discover program <ArrowRight size={15} /></Link>
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}
@@ -285,11 +308,11 @@ export function HomePage() {
 export function AboutPage() {
   return (
     <>
-      <PublicHero eyebrow="About our school" title="Rooted in community. Focused on every child." description="Balili Elementary School is a public learning community committed to joyful, inclusive, and meaningful basic education." />
+      <PublicHero eyebrow="About our school" title="Rooted in community. Focused on every child." description="Balili Elementary School is a public learning community committed to joyful, inclusive, and meaningful basic education." image={sectionAbout} />
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:px-8">
           <Reveal className="relative">
-            <img src={classroomPhoto} alt="Learners collaborating in a Balili classroom" className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[0_30px_80px_rgba(7,27,51,.18)]" />
+            <img src={aboutHistory} alt="Balili learners exploring school memories with a teacher" className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[0_30px_80px_rgba(7,27,51,.18)]" />
             <div className="absolute -bottom-7 -right-4 max-w-[240px] rounded-2xl bg-skybrand-500 p-5 text-white shadow-xl sm:right-[-2rem]"><Star fill="currentColor" size={20} /><p className="mt-3 font-display text-lg font-extrabold">Every learner matters.</p><p className="mt-1 text-xs leading-5 text-skybrand-50">A simple belief that guides every classroom decision.</p></div>
           </Reveal>
           <Reveal delay={.1}>
@@ -340,7 +363,7 @@ export function PublicAnnouncementsPage() {
 
   return (
     <>
-      <PublicHero eyebrow="School news" title="Stories, notices, and moments worth sharing" description="Stay close to classroom life, important school advisories, learner milestones, and community activities." image={classroomPhoto}>
+      <PublicHero eyebrow="School news" title="Stories, notices, and moments worth sharing" description="Stay close to classroom life, important school advisories, learner milestones, and community activities." image={sectionNews}>
         <div className="mt-8 flex flex-wrap gap-3">
           <span className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-sm font-semibold backdrop-blur-md"><Megaphone size={16} className="text-skybrand-300" />Updated by the school office</span>
           <span className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-sm font-semibold backdrop-blur-md"><Bookmark size={16} className="text-amber-300" />Important posts stay pinned</span>
@@ -352,7 +375,7 @@ export function PublicAnnouncementsPage() {
           <Reveal className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/30 bg-white shadow-[0_30px_80px_rgba(7,27,51,.18)]">
             <div className="grid lg:grid-cols-[1.05fr_.95fr]">
               <div className="relative min-h-80 overflow-hidden">
-                <img src={classroomPhoto} alt="Balili learners working together" className="absolute inset-0 h-full w-full object-cover" />
+                <img src={newsFeature} alt="Balili learners enjoying Reading Buddy Day" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 flex gap-2"><Badge tone="sky">Featured story</Badge>{featured.pinned && <Badge tone="amber"><Pin size={11} className="mr-1" />Pinned</Badge>}</div>
               </div>
@@ -433,7 +456,7 @@ export function PublicEventsPage() {
 
   return (
     <>
-      <PublicHero eyebrow="Events calendar" title="School life, thoughtfully planned" description="Browse the real month calendar, choose a date, and save important Balili Elementary School activities to your device.">
+      <PublicHero eyebrow="Events calendar" title="School life, thoughtfully planned" description="Browse the real month calendar, choose a date, and save important Balili Elementary School activities to your device." image={sectionEvents}>
         <div className="mt-8 flex flex-wrap gap-3">
           {['Academic', 'Community', 'Family meetings', 'Student activities'].map((item) => <span key={item} className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-slate-100 backdrop-blur-md">{item}</span>)}
         </div>
@@ -509,7 +532,7 @@ export function ProgramsPage() {
   const ActiveIcon = active.icon
   return (
     <>
-      <PublicHero eyebrow="Programs and services" title="Every learner deserves more ways to thrive" description="Explore academic, wellness, creative, and family programs designed around the whole child." image={classroomPhoto}>
+      <PublicHero eyebrow="Programs and services" title="Every learner deserves more ways to thrive" description="Explore academic, wellness, creative, and family programs designed around the whole child." image={programsHero}>
         <div className="mt-8 flex flex-wrap gap-3"><Link to="/contact"><Button variant="sky" size="lg">Ask about a program <ArrowRight size={16} /></Button></Link><span className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold backdrop-blur-md"><Check size={16} className="text-emerald-300" />Open to Grades 1 to 6</span></div>
       </PublicHero>
 
@@ -520,7 +543,7 @@ export function ProgramsPage() {
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
               {programs.map(({ icon: Icon, title, short, color }, index) => (
                 <button key={title} onClick={() => setActiveIndex(index)} className={`group flex items-center gap-3 rounded-2xl p-3 text-left transition ${activeIndex === index ? 'bg-navy-900 text-white shadow-lg' : 'hover:bg-white hover:shadow-sm'}`}>
-                  <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white ${color}`}><Icon size={20} /></span>
+                  <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white ${color}`}><Icon size={21} weight="duotone" /></span>
                   <span className="min-w-0"><span className={`block text-sm font-bold ${activeIndex === index ? 'text-white' : 'text-navy-950'}`}>{title}</span><span className={`mt-0.5 block truncate text-xs ${activeIndex === index ? 'text-slate-300' : 'text-slate-500'}`}>{short}</span></span>
                   <ChevronRight size={16} className={`ml-auto shrink-0 transition group-hover:translate-x-1 ${activeIndex === index ? 'text-skybrand-300' : 'text-slate-300'}`} />
                 </button>
@@ -529,7 +552,7 @@ export function ProgramsPage() {
           </div>
           <motion.div key={active.title} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .35 }} className="grid lg:grid-cols-[1fr_.85fr]">
             <div className="flex flex-col justify-center p-7 sm:p-10">
-              <div className={`grid h-14 w-14 place-items-center rounded-2xl text-white shadow-lg ${active.color}`}><ActiveIcon size={25} /></div>
+              <div className={`grid h-14 w-14 place-items-center rounded-2xl text-white shadow-lg ${active.color}`}><ActiveIcon size={27} weight="duotone" /></div>
               <p className="mt-7 text-xs font-bold uppercase tracking-[.18em] text-skybrand-600">{active.short}</p>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-navy-950">{active.title}</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">{active.text}</p>
@@ -537,7 +560,7 @@ export function ProgramsPage() {
               <Link to="/contact" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-skybrand-600">Talk to the school office <ArrowRight size={16} /></Link>
             </div>
             <div className="relative min-h-80 overflow-hidden">
-              <img src={classroomPhoto} alt="Balili learners participating in school programs" className="absolute inset-0 h-full w-full object-cover" />
+              <img src={active.image} alt={`${active.title} at Balili Elementary School`} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/10 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/15 bg-navy-950/60 p-5 text-white backdrop-blur-md">
                 <p className="font-display text-3xl font-extrabold">{active.stat}</p>

@@ -6,6 +6,7 @@ import {
 import { useApp } from '../../context/AppContext'
 import { averageGrade, getRisk } from '../../utils/risk'
 import { Badge, Button, Card, Field, Modal, PageHeader, Select, StatCard } from '../../components/ui'
+import AgentWorkspace from '../../components/agent/AgentWorkspace'
 
 const blankTeacher = { name: '', role: 'Adviser', assignment: 'Grade 1 • Mapagmahal', subject: 'All core subjects', email: '', status: 'Active' }
 
@@ -51,66 +52,11 @@ export function TeachersPage() {
   )
 }
 
-const predefinedQuestions = [
-  'Which grade level needs the most attendance support?',
-  'How many students need academic support?',
-  'What should I do for a frequently absent student?',
-  'Which subject has the lowest average?',
-  'Give me a short school performance summary.',
-]
-
 export function AIAssistantPage() {
-  const { students } = useApp()
-  const [messages, setMessages] = useState([
-    { role: 'assistant', text: 'Hello! I can summarize ORATRACK demo data, explain risk flags, and suggest practical next steps. Choose a question below or type your own.' },
-  ])
-  const [input, setInput] = useState('')
-
-  const answerQuestion = (question) => {
-    const supportCount = students.filter((student) => averageGrade(student.grades) < 80).length
-    const highRisk = students.filter((student) => getRisk(student).level === 'High').length
-    const normalized = question.toLowerCase()
-    if (normalized.includes('attendance') && normalized.includes('grade')) return 'Grade 4 needs the most attendance support in the current demo data. It has 25 recorded absences. Start with learners who have 7 or more absences, then contact guardians and review recurring absence dates.'
-    if (normalized.includes('academic') || normalized.includes('low grade')) return `${supportCount} students have an average grade below 80 and may need academic support. Begin with short remediation activities in Mathematics and review progress each week.`
-    if (normalized.includes('frequently absent') || normalized.includes('absent student')) return 'Check the attendance pattern, speak privately with the learner, and contact the guardian. Record the reason, offer missed-work support, and monitor attendance weekly.'
-    if (normalized.includes('subject') || normalized.includes('lowest average')) return 'Mathematics has the lowest current subject average at 79. Consider focused practice, small-group review, and checking which competencies are causing the most difficulty.'
-    if (normalized.includes('summary') || normalized.includes('performance')) return `School attendance is improving and the overall subject picture is stable. ${supportCount} learners need academic support, while ${highRisk} have high-risk signals that call for prompt follow-up.`
-    return `Based on the demo records, focus first on attendance, Mathematics performance, and the ${highRisk} high-risk learners. A good next step is to review the related student profiles and record a clear follow-up action.`
-  }
-
-  const send = (question = input) => {
-    const clean = question.trim()
-    if (!clean) return
-    setMessages((current) => [...current, { role: 'user', text: clean }, { role: 'assistant', text: answerQuestion(clean) }])
-    setInput('')
-  }
-
   return (
     <>
-      <PageHeader eyebrow="Simulated rule-based support" title="AI Assistant" description="Ask practical questions about the current demo data. No external AI service is called." />
-      <div className="grid gap-6 xl:grid-cols-[320px_1fr]">
-        <div className="space-y-6">
-          <Card>
-            <div className="flex items-center gap-2"><Sparkles className="text-skybrand-600" size={19} /><h2 className="font-display font-bold text-navy-950">Try a question</h2></div>
-            <div className="mt-4 space-y-2">{predefinedQuestions.map((question) => <button key={question} onClick={() => send(question)} className="w-full rounded-xl border border-slate-200 p-3 text-left text-xs font-semibold leading-5 text-slate-600 transition hover:border-skybrand-300 hover:bg-skybrand-50">{question}</button>)}</div>
-          </Card>
-          <Card className="bg-navy-950 text-white">
-            <Bot className="text-skybrand-300" />
-            <h2 className="mt-4 font-display text-lg font-bold">How it works</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-300">This assistant uses simple, explainable rules over the local demo dataset. It does not send information to an outside service.</p>
-          </Card>
-        </div>
-        <Card padding={false} className="flex min-h-[620px] flex-col overflow-hidden">
-          <div className="flex items-center gap-3 border-b border-slate-100 px-5 py-4"><div className="grid h-10 w-10 place-items-center rounded-xl bg-navy-900 text-white"><Bot size={20} /></div><div><p className="font-display text-sm font-bold text-navy-950">ORATRACK Assistant</p><p className="text-xs text-emerald-600">Ready with current demo data</p></div></div>
-          <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-5">
-            {messages.map((message, index) => <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}><div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === 'user' ? 'rounded-br-md bg-navy-900 text-white' : 'rounded-bl-md border border-slate-200 bg-white text-slate-700 shadow-sm'}`}>{message.text}</div></div>)}
-          </div>
-          <form onSubmit={(event) => { event.preventDefault(); send() }} className="flex gap-2 border-t border-slate-100 bg-white p-4">
-            <input className="input flex-1" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask about attendance, grades, or support..." aria-label="Ask the AI assistant" />
-            <Button type="submit" variant="sky" aria-label="Send question"><Send size={17} /><span className="hidden sm:inline">Send</span></Button>
-          </form>
-        </Card>
-      </div>
+      <PageHeader eyebrow="AI operations workspace" title="ORA AI Agent" description="Analyze every demo record, draft teacher work, and prepare safe, reviewable changes across ORATRACK." />
+      <div className="h-[calc(100vh-190px)] min-h-[680px]"><AgentWorkspace /></div>
     </>
   )
 }

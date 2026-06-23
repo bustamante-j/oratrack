@@ -25,7 +25,7 @@ export function Button({ children, variant = 'primary', size = 'md', className =
 }
 
 export function Card({ children, className = '', padding = true, ...props }) {
-  return <section className={cn('card', padding && 'p-5', className)} {...props}>{children}</section>
+  return <section className={cn('card min-w-0', padding && 'p-5', className)} {...props}>{children}</section>
 }
 
 export function Badge({ children, tone = 'slate', className = '' }) {

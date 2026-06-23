@@ -9,7 +9,10 @@ export default defineConfig({
         manualChunks: {
           react: ['react', 'react-dom', 'react-router-dom'],
           charts: ['recharts'],
-          icons: ['lucide-react'],
+          icons: ['lucide-react', '@phosphor-icons/react'],
+          motion: ['framer-motion'],
+          calendar: ['react-day-picker', 'date-fns'],
+          carousel: ['swiper'],
         },
       },
     },
