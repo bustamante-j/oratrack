@@ -22,10 +22,13 @@ export default {
       },
       boxShadow: {
         soft: '0 18px 45px rgba(15, 55, 95, 0.08)',
+        glow: '0 24px 70px rgba(44, 167, 237, 0.18)',
+        editorial: '0 28px 90px rgba(7, 27, 51, 0.14)',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['Manrope', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Sora', '"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        editorial: ['Newsreader', 'Georgia', 'serif'],
       },
     },
   },

@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Facebook, Instagram, Youtube } from 'lucide-react'
 import {
-  Menu, X, MapPin, Phone, Mail, Facebook, ArrowUpRight,
-  Clock3, ChevronRight, Instagram, Youtube, Heart,
-} from 'lucide-react'
+  AltArrowRightBoldDuotone as ChevronRight,
+  ArrowRightUpBoldDuotone as ArrowUpRight,
+  ClockCircleBoldDuotone as Clock3,
+  CloseCircleBoldDuotone as X,
+  HamburgerMenuBoldDuotone as Menu,
+  HeartBoldDuotone as Heart,
+  LetterBoldDuotone as Mail,
+  MapPointBoldDuotone as MapPin,
+  PhoneCallingRoundedBoldDuotone as Phone,
+} from 'solar-icon-set'
 import { AnimatePresence, motion } from 'framer-motion'
 import BrandLogo from '../components/BrandLogo'
 
@@ -30,7 +38,7 @@ export default function PublicLayout() {
   }, [location.pathname])
 
   return (
-    <div className="min-h-screen overflow-hidden bg-white text-slate-800">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-hidden bg-white text-slate-800">
       <div className="relative z-[60] bg-navy-950 text-white">
         <div className="mx-auto flex min-h-10 max-w-7xl items-center justify-between gap-4 px-4 py-2 text-[11px] sm:px-6 lg:px-8">
           <p className="flex min-w-0 items-center gap-2 text-slate-300">
@@ -64,7 +72,7 @@ export default function PublicLayout() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <Link to="/contact" className="rounded-xl px-3 py-2 text-sm font-semibold text-slate-500 transition hover:text-navy-900">School office</Link>
-            <Link to="/login" className="group inline-flex items-center gap-2 rounded-xl bg-navy-900 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-navy-900/15 transition hover:-translate-y-0.5 hover:bg-skybrand-600 hover:shadow-skybrand-500/25">
+            <Link to="/login" className="shine-card group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-navy-900 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-navy-900/15 transition hover:-translate-y-0.5 hover:bg-skybrand-600 hover:shadow-skybrand-500/25">
               Teacher Portal <ArrowUpRight size={16} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
@@ -99,7 +107,7 @@ export default function PublicLayout() {
               <p className="text-xs font-bold uppercase tracking-[.2em] text-skybrand-300">Stay connected</p>
               <h2 className="mt-3 text-balance font-display text-2xl font-extrabold sm:text-3xl">School news, learner milestones, and community stories.</h2>
             </div>
-            <Link to="/announcements" className="inline-flex w-fit items-center gap-2 rounded-xl bg-skybrand-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-skybrand-400">Read school updates <ArrowUpRight size={16} /></Link>
+            <Link to="/announcements" className="shine-card relative inline-flex w-fit items-center gap-2 overflow-hidden rounded-xl bg-skybrand-500 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-skybrand-400">Read school updates <ArrowUpRight size={16} /></Link>
           </div>
 
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_.8fr_1fr_.8fr]">
